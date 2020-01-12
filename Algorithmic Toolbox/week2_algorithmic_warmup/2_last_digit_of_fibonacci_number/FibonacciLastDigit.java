@@ -2,8 +2,10 @@ import java.util.*;
 
 public class FibonacciLastDigit {
     private static int getFibonacciLastDigitNaive(int n) {
-        if (n <= 1)
-            return n;
+        if (n == 0)
+            return 0;
+        if (n == 1)
+            return 1;
 
         int previous = 0;
         int current  = 1;
@@ -11,10 +13,11 @@ public class FibonacciLastDigit {
         for (int i = 0; i < n - 1; ++i) {
             int tmp_previous = previous;
             previous = current;
-            current = tmp_previous + current;
+            current = (tmp_previous + current)%10;
         }
 
-        return current % 10;
+        //return current % 10;
+        return current;
     }
     
     public static void main(String[] args) {
